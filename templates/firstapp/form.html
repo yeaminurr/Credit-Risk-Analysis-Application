@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'firstapp/base.html' %}
+{% block body_block %}
+    <h1>Hello</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+      <div class="input-group mb-3">
+                <span class="input-group-text" id="abcd" >Your Annual Income</span>
+                <input title="abcd" type="text" class="form-control"  name="Annual Income"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text">$</span>
+        </div>
+<a type="submit" class="btn btn-primary mb-3"   >Confirm identity</a>
+</form>
+
+{% endblock %}

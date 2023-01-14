@@ -1,0 +1,106 @@
+{% extends 'firstapp/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+
+{% block body_block %}
+{% if pred == 0 %}
+
+{#        <h1 style=" text-align: center ;padding-top: 12px;padding-bottom: 20px" >Sorry You are Not Eligible for Getting a Loan</h1>#}
+    <h1 style=" text-align: center ;padding-top: 12px;padding-bottom: 20px" >Sorry You are in a Credit Risk</h1>
+      <h3 style="text-align: center ;padding-bottom: 20px" >To get recommendation Click the button below</h3>
+      <div class="d-grid gap-1 col-3 mx-auto" >
+      <p></p>
+
+      <button id="showbutton"  type="button" class="btn btn-primary active" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Proceed</button>
+</div>
+
+      <form id="myform" method="POST">
+      {% csrf_token %}
+        {{ form.as_p }}
+          <h3 style="text-align: center ;padding-top: 60px ; padding-bottom: 20px" >Please Select The Attributes You are Flexible with Changing</h3>
+        <div class="row g-3">
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" name='Credit Score' type="checkbox" value="1" >
+                    <label class="form-check-label" for="1">
+                        Credit Score
+                                </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" name="Annual Income" type="checkbox" value="1" >
+                    <label class="form-check-label" for="1">
+                        Your Annual Income
+                                </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Home Ownership" value="1" >
+                    <label class="form-check-label" for="2">
+                        Home Ownership
+                                </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" name="Monthly Debt" type="checkbox" value="1" id="3">
+                    <label class="form-check-label" for="3">
+                        Monthly Debt
+                                </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" name='Current Loan Amount' type="checkbox" value="1" >
+                    <label class="form-check-label" for="1">
+                        Current Loan Amount
+                                </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" name="Number of Open Accounts" type="checkbox" value="1" id="4">
+                    <label class="form-check-label" for="4">
+                        Number of Open Accounts
+                                </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" name="Current Credit Balance" type="checkbox" value="1" id="5">
+                    <label class="form-check-label" for="5">
+                        Current Credit Balance
+                                </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" name="Maximum Open Credit" type="checkbox" value="1" id="6">
+                    <label class="form-check-label" for="6">
+                        Maximum Open Credit
+                                </label>
+                </div>
+            </div>
+            <p></p>
+
+           <button type="submit" class="btn btn-primary mb-3" value="Confirm"  >Confirm</button>
+
+
+
+
+        </div></form>
+
+    {% else  %}
+{#        <h1 style="text-align: center">You are Eligible for Getting a Loan</h1>#}
+    <h1 style="text-align: center">You are not in a Credit Risk</h1>
+    {% endif %}
+{% for i, j in one.items %}
+    <p>key: {{ i }}</p> <p>value: {{ j }}</p>
+    {% endfor %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+  <script src={% static 'firstapp/result.js' %}></script>
+{% endblock %}

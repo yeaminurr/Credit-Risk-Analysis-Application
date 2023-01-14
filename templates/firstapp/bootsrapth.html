@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% extends 'firstapp/base.html' %}
+{% block body_block %}
+
+    <h2>Please Enter Your Credentials</h2>
+    {% if myflag == False %}
+        <h4 style="color: red">Input must be integer or float and Every input must not be empty</h4>
+    {% endif %}
+    <h3></h3>
+    <form  method="POST"  >
+        {{ form.as_p }}
+        {% csrf_token %}
+    <div class="row g-3">
+        <div class="col-sm-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="abcd" >Credit Score</span>
+                <input  type="text" class="form-control"  name='Credit Score'  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+        </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="abcd" >Your Annual Income</span>
+                <input  type="text" class="form-control"  name="Annual Income"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text">$</span>
+        </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="abcd" >Current Loan Amount</span>
+                <input  type="text" class="form-control"  name="Current Loan Amount"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text">$</span>
+        </div>
+        </div>
+       <div class="col-sm-6">
+           <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default" >Years in current job</span>
+                <input  type="text" class="form-control" name="Years in current job" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text">Years</span>
+           </div>
+        </div>
+        <div class="col-sm-6">
+         <div class="input-group mb-3">
+                <span class="input-group-text" >Home Ownership</span>
+                <select class="form-select" name="Home Ownership" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="0">Home Mortgage</option>
+                    <option value="1">Own Home</option>
+                    <option value="2">Rent</option>
+                    <option value="3">HaveMortgage</option>
+                </select>
+         </div>
+         </div>
+        <div class="col-sm-6">
+         <div class="input-group mb-3">
+                <span class="input-group-text" >Purpose of Loan</span>
+                <select class="form-select" name="Purpose" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="0">Home Improvements</option>
+                    <option value="1">Debt Consolidation</option>
+                    <option value="2">Buy House</option>
+                    <option value="4">Business Loan</option>
+                    <option value="5">Buy a Car</option>
+                    <option value="6">Major Purchase</option>
+                    <option value="8">Small Business</option>
+                    <option value="11">Educational Expenses</option>
+                    <option value="9">Wedding</option>
+                    <option value="3">Others</option>
+
+                </select>
+         </div>
+         </div>
+         <div class="col-sm-6">
+         <div class="input-group mb-3">
+                <span class="input-group-text" >Loan Term</span>
+                <select class="form-select" name="Term" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">Short Term</option>
+                    <option value="0">Long Term</option>
+                </select>
+         </div>
+         </div>
+       <div class="col-sm-6">
+           <div class="input-group mb-3">
+                <span class="input-group-text"  name="Monthly Debt">Monthly Debt</span>
+                <input  type="text" name="Monthly Debt" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text">$</span>
+           </div>
+
+       </div>
+       <div class="col-sm-6">
+           <div class="input-group mb-3">
+                <span class="input-group-text"  name="Years of Credit History">Years of Credit History</span>
+                <input  type="text" name="Years of Credit History" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text">Years</span>
+           </div>
+
+       </div>
+        <div class="col-sm-6">
+           <div class="input-group mb-3">
+                <span class="input-group-text"  name="Number of Open Accounts">Number of Open Accounts</span>
+                <input  type="text" name="Number of Open Accounts" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+           </div>
+
+       </div>
+        <div class="col-sm-6">
+           <div class="input-group mb-3">
+                <span class="input-group-text"  name="Current Credit Balance">Current Credit Balance</span>
+                <input  type="text" name="Current Credit Balance" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+               <span class="input-group-text">$</span>
+           </div>
+       </div>
+        <div class="col-sm-6">
+           <div class="input-group mb-3">
+                <span class="input-group-text"  name="Maximum Open Credit">Maximum Open Credit</span>
+                <input  type="text" name="Maximum Open Credit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+               <span class="input-group-text">$</span>
+           </div>
+       </div>
+
+    </div>
+    <div class="col-auto">
+
+    <button type="submit" class="btn btn-primary mb-3" value="Confirm identity"  >Confirm Submission</button>
+
+
+
+
+    </div>
+        </form>
+
+
+
+
+{% endblock %}

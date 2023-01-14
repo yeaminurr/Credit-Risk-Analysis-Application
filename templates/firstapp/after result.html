@@ -1,0 +1,55 @@
+{% extends 'firstapp/base.html' %}
+{% load static %}
+{% load my_extras %}
+
+<!DOCTYPE html>
+
+{% block body_block %}
+<h2 style="text-align: center ; padding-top: 15px; padding-bottom: 40px" >Your Result is Ready. Here is What We Got For You</h2>
+    <div style="text-align: center;  margin:0 auto;align-content: center"  id="finalresult" >
+    <div class="row" style="border-bottom-color: #1d3557;border-bottom-width: 2px " >
+    <div class = 'col-lg-4'><h4>Attributes</h4></div><div class = 'col-lg-4'><h4>Before</h4></div><div class = 'col-lg-4'><h4>After</h4></div>
+    <hr>
+    <p></p>
+    {% for k,v in recommendation.items %}
+
+        {% if improve|dict_key:k == 1 %}
+            <div class = 'col-lg-4'   ><h5>{{ k }}</h5></div><div class = 'col-lg-4'  ><h5>{{ actual|dict_key:k }}  </h5></div><div class = 'col-lg-4'  ><h5>{{ v }}</h5></div>
+        {% else %}
+            <div class = 'col-lg-4'   ><h5>{{ k }}</h5></div><div class = 'col-lg-4'  ><h5>{{ actual|dict_key:k }}  </h5></div><div class = 'col-lg-4'  ><h5>{{ actual|dict_key:k }}</h5></div>
+        {% endif %}
+        <hr style="height:3px;border-width:0;color: #1d3557;background-color:#1d3557; padding-right: 500px">
+        <p></p>
+
+
+{#        <div class = 'col-lg-3' style="text-align: left"  ><h5>{{ k }}</h5></div><div class = 'col-lg-4' style="text-align: left" ><h5>{{ actual|dict_key:k }}  </h5></div><div class = 'col-lg-5' style="text-align: left" ><h5>{{ v }}</h5></div>#}
+    {% endfor %}
+    </div>
+    <h2 style="text-align: center ; padding-top: 15px; padding-bottom: 40px" >Suggestive Improvement</h2>
+     <div class="row" style="border-bottom-color: #1d3557;border-bottom-width: 2px " >
+    {% for k,v in finalresult.items %}
+
+        {% if improve|dict_key:k == 1 %}
+            {% if  finalresult|dict_key:k > 0 %}
+                <div class = 'col-lg-6'   ><h5>{{ k }}</h5></div><div class = 'col-lg-6'  ><h5>Should be improved by {{  finalresult|dict_key:k }}</h5></div>
+
+            {% elif finalresult|dict_key:k < 0 %}
+                <div class = 'col-lg-6'   ><h5>{{ k }}</h5></div><div class = 'col-lg-6'  ><h5>Should be decreased by {{ finalresult|multiply:k }}</h5></div>
+            {% else %}
+                <div class = 'col-lg-6'   ><h5>{{ k }}</h5></div><div class = 'col-lg-6'  ><h5>No Improvement Required</h5></div>
+
+            {% endif %}
+            <hr style="height:3px;border-width:0;color: #1d3557;background-color:#1d3557; padding-right: 500px">
+             <p></p>
+
+        {% endif %}
+
+
+    {% endfor %}
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+  <script src = {% static 'firstapp/result.js' %}></script>
+{% endblock %}
